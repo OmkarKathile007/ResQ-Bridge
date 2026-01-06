@@ -194,6 +194,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         //  Allow Login & Register (Explicit String Matcher)
                         .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                        .requestMatchers("/ping").permitAll()
                         .requestMatchers("/api/donors/**").authenticated()
                         .requestMatchers("/api/**").permitAll()
 
