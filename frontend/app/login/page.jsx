@@ -40,6 +40,8 @@ export default function AuthPage() {
     password: "",
     confirmPassword: "",
   });
+
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
   
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -65,9 +67,9 @@ export default function AuthPage() {
     }
 
     setLoading(true);
-
+    
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${BACKEND_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

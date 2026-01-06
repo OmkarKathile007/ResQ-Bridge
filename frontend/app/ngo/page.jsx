@@ -78,6 +78,8 @@ const NGODashboard = () => {
   // Get Token from Context
   const { token, isLoading: authLoading } = useAuth();
 
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
   const stats = {
     donors: { value: "1,248", trend: "+12%" },
     volunteers: { value: "86", trend: "+5%" },
@@ -97,7 +99,7 @@ const NGODashboard = () => {
             headers["Authorization"] = `Bearer ${token}`;
         }
 
-        const response = await fetch("http://localhost:8080/api/donors", {
+        const response = await fetch(`${BACKEND_URL}/api/donors`, {
             headers: headers
         });
 
