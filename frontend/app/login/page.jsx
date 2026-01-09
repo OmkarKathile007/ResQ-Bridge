@@ -135,7 +135,7 @@ export default function AuthPage() {
             const data = respText ? JSON.parse(respText) : {};
             console.log("Signup: parsed response", data);
             localStorage.setItem("token", data.token);
-            router.push('/login');
+            router.push(`/${selectedType}`);
 
     } catch (err) {
       console.error(err);
